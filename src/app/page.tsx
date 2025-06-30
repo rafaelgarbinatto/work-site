@@ -269,9 +269,9 @@ export default function Home() {
                   <svg className="w-8 h-8 align-middle" viewBox="0 0 448 448" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
                       <linearGradient id="ig-outline" x1="224" y1="0" x2="224" y2="448" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#fd5" />
-                        <stop offset="0.5" stop-color="#ff543e" />
-                        <stop offset="1" stop-color="#c837ab" />
+                        <stop stopColor="#fd5" />
+                        <stop offset="0.5" stopColor="#ff543e" />
+                        <stop offset="1" stopColor="#c837ab" />
                       </linearGradient>
                     </defs>
                     <rect x="64" y="64" width="320" height="320" rx="80" stroke="url(#ig-outline)" stroke-width="32" fill="none" />

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-const whatsappNumber = "55992108449"; // Coloque o DDD e número sem espaços
+const whatsappNumber = "5551992108449"; // Formato internacional correto: +55 51 99210-8449
 const defaultMsg = encodeURIComponent("Olá! Gostaria de saber mais sobre os serviços da Work PoA.");
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${defaultMsg}`;
 
