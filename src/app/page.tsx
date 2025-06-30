@@ -1,103 +1,275 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import HeroMosaic from "@/components/ui/HeroMosaic";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <main className="min-h-screen bg-background">
+      {/* NAVBAR */}
+      <nav className="sticky top-0 z-50 flex items-center justify-between px-6 lg:px-12 py-4 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
+        <div className="flex items-center space-x-3">
+          <Image
+            src="/logo-workpoa.avif"
+            width={48}
+            height={48}
+            alt="Logo Work PoA"
+            className="w-10 h-8"
+            priority
+          />
+          <span className="text-2xl font-extrabold tracking-wide text-[#1a1a1a]">Work PoA</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        <div className="hidden md:flex space-x-8 text-base font-medium text-[#222]">
+          <a href="#servicos">Serviços</a>
+          <a href="#portfolio">Portfólio</a>
+          <a href="#sobre">Sobre</a>
+          <a href="#contato">Contato</a>
+        </div>
+        <div className="md:hidden">
+          <button className="p-2">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </nav>
+
+      {/* HERO SECTION */}
+      <HeroMosaic 
+        title="Projeto de Interiores"
+        subtitle="Por apenas R$699,00"
+        details="até 20m² por ambiente"
+        ctaText="Peça seu projeto agora!"
+        ctaHref="#contato"
+        bannerImage="/portfolio/banner.png"
+      />
+
+      {/* SERVIÇOS */}
+      <section id="servicos" className="py-20 px-6 lg:px-12 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 gradient-text">
+              Nossos Serviços
+            </h2>
+            <p className="text-lg text-[#222] max-w-2xl mx-auto">
+              Soluções completas em engenharia, reformas e projetos de interiores
+            </p>
+          </div>
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                title: "Projetos em 3D (renders)",
+                desc: "Visualize seu ambiente antes da obra com renders realistas.",
+                icon: (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Projetos de Interiores",
+                desc: "Layouts funcionais, estética e ergonomia para seu espaço.",
+                icon: (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Design de Interiores",
+                desc: "Escolha de móveis, acabamentos, iluminação e decoração.",
+                icon: (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Laudos Técnicos e Vistorias",
+                desc: "Conformidade e segurança para empresas e residências.",
+                icon: (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Consultoria",
+                desc: "Assessoria personalizada para reformas ou compra de imóveis.",
+                icon: (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Projetos Complementares",
+                desc: "Civil, elétrica, hidráulica e outros projetos técnicos.",
+                icon: (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Obras e Reformas",
+                desc: "Execução do projeto à entrega com equipe especializada.",
+                icon: (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Acompanhamento de Obra",
+                desc: "Supervisão técnica e gestão das etapas da obra.",
+                icon: (
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                  </svg>
+                ),
+              },
+            ].map((serv, i) => (
+              <div key={i} className="card-gradient-border p-6 hover-lift">
+                <div className="h-12 w-12 gradient-primary rounded-lg mb-4 flex items-center justify-center">{serv.icon}</div>
+                <h3 className="font-bold text-lg mb-2">{serv.title}</h3>
+                <p className="text-gray-600 text-sm">{serv.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PORTFÓLIO */}
+      <section id="portfolio" className="py-20 px-6 lg:px-12 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 gradient-text">
+              Portfólio
+            </h2>
+            <p className="text-lg text-[#222]">Conheça alguns dos nossos projetos realizados</p>
+          </div>
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            {[1, 2, 3, 4, 5, 6].map((n) => (
+              <div key={n} className="group relative overflow-hidden rounded-2xl shadow-lg hover-lift bg-white card-gradient-border">
+                <Image
+                  src={`/portfolio/${n}.png`}
+                  width={600}
+                  height={400}
+                  className="w-full h-72 object-cover transition-transform duration-300 group-hover:scale-105"
+                  alt={`Projeto real de interiores ${n}`}
+                  quality={90}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div className="p-6 text-white">
+                    <h3 className="font-bold text-lg">Projeto {n}</h3>
+                    <p className="text-sm opacity-90">Design de Interiores</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SOBRE */}
+      <section id="sobre" className="py-20 px-6 lg:px-12 bg-background">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl lg:text-5xl font-extrabold mb-8 gradient-text">
+            Sobre a Work
+          </h2>
+          <div className="prose prose-lg mx-auto text-[#222]">
+            <p className="text-lg leading-relaxed mb-6">
+              A <strong className="gradient-text">Work PoA</strong> é uma empresa especializada em engenharia, reformas e projetos de interiores, comprometida com a excelência e inovação em cada projeto.
+            </p>
+            <p className="text-lg leading-relaxed mb-6">
+              Atuamos com <strong>seriedade, qualidade e responsabilidade</strong>, atendendo tanto empresas quanto pessoas físicas, do conceito inicial à entrega final. Nossa equipe especializada oferece acompanhamento técnico completo, garantindo que cada detalhe seja executado com perfeição.
+            </p>
+            <p className="text-lg leading-relaxed">
+              Com anos de experiência no mercado, construímos nossa reputação baseada na confiança dos nossos clientes e na qualidade superior dos nossos serviços.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTATO */}
+      <section id="contato" className="py-20 px-6 lg:px-12 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-extrabold mb-4 gradient-text">
+              Fale com a gente
+            </h2>
+            <p className="text-lg text-[#222]">Entre em contato e vamos transformar seu projeto em realidade</p>
+          </div>
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div className="card-gradient-border p-8">
+              <h3 className="text-2xl font-bold mb-6 gradient-text">Informações de Contato</h3>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3">
+                  <div className="h-10 w-10 gradient-primary rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold">Telefone</p>
+                    <p className="text-gray-600">51 99210.8449</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <div className="h-10 w-10 gradient-primary rounded-lg flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-semibold">Instagram</p>
+                    <a href="https://instagram.com/workpoa" target="_blank" rel="noopener noreferrer" className="text-[#12D8FA] hover:underline">@workpoa</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="card-gradient-border p-8">
+              <form className="space-y-6">
+                <div>
+                  <Input type="text" placeholder="Nome completo" className="input-modern w-full" required />
+                </div>
+                <div>
+                  <Input type="email" placeholder="Email" className="input-modern w-full" required />
+                </div>
+                <div>
+                  <Input type="tel" placeholder="Telefone" className="input-modern w-full" required />
+                </div>
+                <div>
+                  <textarea placeholder="Como podemos ajudar?" rows={4} className="input-modern w-full resize-none" required />
+                </div>
+                <Button type="submit" className="btn-primary w-full">Enviar mensagem</Button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="py-12 px-6 lg:px-12 bg-background border-t border-gray-100">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex items-center justify-center space-x-3 mb-6">
+            <Image
+              src="/logo-workpoa.avif"
+              width={32}
+              height={32}
+              alt="Logo Work PoA"
+              className="w-8 h-6"
+            />
+            <span className="text-lg font-extrabold tracking-wide text-[#1a1a1a]">Work PoA</span>
+          </div>
+          <p className="text-[#222] mb-4">Engenharia, Reformas e Projetos de Interiores</p>
+          <p className="text-sm text-[#888]">
+            &copy; {new Date().getFullYear()} Work PoA. Todos os direitos reservados.
+          </p>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
