@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import WhatsappFloatButton from "@/components/ui/WhatsappFloatButton";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,6 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR">
       <body className={`${inter.variable} antialiased`}>
         {children}
+        <WhatsappFloatButton />
       </body>
     </html>
   );

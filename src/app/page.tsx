@@ -1,9 +1,23 @@
+"use client";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import HeroMosaic from "@/components/ui/HeroMosaic";
+import React, { useState } from "react";
 
 export default function Home() {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImg, setModalImg] = useState<string | null>(null);
+
+  const openModal = (img: string) => {
+    setModalImg(img);
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalImg(null);
+  };
+
   return (
     <main className="min-h-screen bg-background">
       {/* NAVBAR */}
@@ -152,7 +166,11 @@ export default function Home() {
           </div>
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {[1, 2, 3, 4, 5, 6].map((n) => (
-              <div key={n} className="group relative overflow-hidden rounded-2xl shadow-lg hover-lift bg-white card-gradient-border">
+              <div
+                key={n}
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover-lift bg-white card-gradient-border cursor-pointer"
+                onClick={() => openModal(`/portfolio/${n}.png`)}
+              >
                 <Image
                   src={`/portfolio/${n}.png`}
                   width={600}
@@ -161,10 +179,10 @@ export default function Home() {
                   alt={`Projeto real de interiores ${n}`}
                   quality={90}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-6 text-white">
-                    <h3 className="font-bold text-lg">Projeto {n}</h3>
-                    <p className="text-sm opacity-90">Design de Interiores</p>
+                <div className="absolute bottom-0 left-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                  <div className="bg-[#FDF6EC]/35 rounded-xl px-4 py-2 shadow-md backdrop-blur-sm w-full max-w-xs flex flex-col items-start">
+                    <h3 className="font-bold text-base text-[#23272F] mb-0.5">Projeto {n}</h3>
+                    <p className="text-xs text-[#555] leading-tight">Design de Interiores</p>
                   </div>
                 </div>
               </div>
@@ -172,6 +190,33 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* MODAL DE IMAGEM DO PORTFÓLIO */}
+      {modalOpen && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in"
+          onClick={closeModal}
+        >
+          <div className="relative max-w-3xl w-full mx-4 aspect-[3/2]" onClick={e => e.stopPropagation()}>
+            <button
+              className="absolute top-2 right-2 text-white text-3xl font-bold bg-black/40 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 transition"
+              onClick={closeModal}
+              aria-label="Fechar"
+            >
+              &times;
+            </button>
+            <Image
+              src={modalImg ?? ''}
+              alt="Projeto ampliado"
+              fill
+              className="rounded-2xl shadow-2xl border-4 border-white object-contain"
+              style={{ objectFit: 'contain' }}
+              sizes="(max-width: 768px) 90vw, 60vw"
+              priority
+            />
+          </div>
+        </div>
+      )}
 
       {/* SOBRE */}
       <section id="sobre" className="py-20 px-6 lg:px-12 bg-background">
@@ -207,22 +252,32 @@ export default function Home() {
               <h3 className="text-2xl font-bold mb-6 gradient-text">Informações de Contato</h3>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="h-10 w-10 gradient-primary rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
+                  {/* Ícone WhatsApp oficial completo */}
+                  <svg className="w-8 h-8 align-middle" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                      <circle cx="16" cy="16" r="16" fill="#25D366" />
+                      <path d="M16 7.5c-4.7 0-8.5 3.7-8.5 8.3 0 1.5.4 2.9 1.1 4.1L7 25l5.3-1.4c1.2.6 2.5.9 3.7.9 4.7 0 8.5-3.7 8.5-8.3S20.7 7.5 16 7.5zm0 14.7c-1.2 0-2.3-.3-3.3-.8l-.2-.1-3.1.8.8-3-.2-.3c-.7-1.1-1.1-2.3-1.1-3.6 0-3.7 3.2-6.7 7.1-6.7s7.1 3 7.1 6.7-3.2 6.7-7.1 6.7zm4-5.1c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1-.1.1-.5.7-.6.8-.1.1-.2.2-.4.1-.2-.1-.8-.3-1.5-1-.6-.5-1-1.2-1.1-1.3-.1-.1 0-.2.1-.3.1-.1.2-.3.3-.4.1-.1.1-.2.2-.3.1-.1.1-.2 0-.3 0-.1-.5-1.2-.7-1.6-.2-.4-.4-.3-.5-.3h-.4c-.1 0-.3 0-.5.2-.2.2-.7.7-.7 1.7 0 1 .7 2 1.1 2.4.1.1 1.5 2.3 3.7 3.1.5.2.9.4 1.2.5.5.2.9.1 1.2.1.4-.1 1.2-.5 1.4-1 .2-.5.2-.9.1-1-.1-.1-.2-.1-.4-.2z" fill="#fff"/>
+                    </g>
+                  </svg>
                   <div>
                     <p className="font-semibold">Telefone</p>
                     <p className="text-gray-600">51 99210.8449</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <div className="h-10 w-10 gradient-primary rounded-lg flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
-                    </svg>
-                  </div>
+                  {/* Ícone Instagram oficial outline com gradiente, sem círculo */}
+                  <svg className="w-8 h-8 align-middle" viewBox="0 0 448 448" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="ig-outline" x1="224" y1="0" x2="224" y2="448" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#fd5" />
+                        <stop offset="0.5" stop-color="#ff543e" />
+                        <stop offset="1" stop-color="#c837ab" />
+                      </linearGradient>
+                    </defs>
+                    <rect x="64" y="64" width="320" height="320" rx="80" stroke="url(#ig-outline)" stroke-width="32" fill="none" />
+                    <circle cx="224" cy="224" r="80" stroke="url(#ig-outline)" stroke-width="32" fill="none" />
+                    <circle cx="336" cy="112" r="16" fill="url(#ig-outline)" />
+                  </svg>
                   <div>
                     <p className="font-semibold">Instagram</p>
                     <a href="https://instagram.com/workpoa" target="_blank" rel="noopener noreferrer" className="text-[#12D8FA] hover:underline">@workpoa</a>
