@@ -68,15 +68,15 @@ export default function HeroMosaic({
       <div className="relative z-10 flex flex-col items-center justify-center text-center w-full max-w-3xl px-4"
         style={bannerImage ? { minHeight: '60vh', justifyContent: 'center' } : {}}>
         {bannerImage ? (
-          <div className="inline-block bg-[#FDF6EC]/90 rounded-2xl px-8 py-8 md:px-16 md:py-10 shadow-lg backdrop-blur-sm">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-[#222] mb-3 drop-shadow-sm">{title}</h1>
-            <p className="text-2xl md:text-3xl mb-2 text-[#444] font-semibold drop-shadow-sm">{subtitle}</p>
+          <div className="inline-block bg-[#FDF6EC]/95 rounded-2xl px-8 py-8 md:px-16 md:py-10 shadow-lg backdrop-blur-sm">
+            <h1 className="text-4xl md:text-6xl font-extrabold text-[#23272F] mb-3 drop-shadow-[0_2px_8px_rgba(160,132,232,0.10)]">{title}</h1>
+            <p className="text-2xl md:text-3xl mb-2 text-[#3A3A3A] font-semibold drop-shadow-[0_1px_4px_rgba(160,132,232,0.10)]">{subtitle}</p>
             {details && (
-              <p className="text-lg mb-6 text-[#666] drop-shadow-sm">{details}</p>
+              <p className="text-lg mb-6 text-[#555] drop-shadow-[0_1px_2px_rgba(160,132,232,0.08)]">{details}</p>
             )}
             <a
               href={ctaHref}
-              className="inline-block mt-2 px-7 py-3 rounded-full bg-gradient-to-r from-sky-400 to-pink-400 text-white font-bold text-lg shadow-lg hover:scale-105 transition"
+              className="btn-primary inline-block mt-2"
             >
               {ctaText}
             </a>

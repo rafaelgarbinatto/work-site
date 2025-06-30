@@ -1,11 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
 :root {
   --radius: 0.75rem;
   --background: #F8F9FA;
-  --foreground: #1E293B;
-  --text-body: #475569;
+  --foreground: #23272F;
+  --text-body: #3A3A3A;
   --card: #fff;
   --border: #E5E7EB;
   --cta: #12D8FA;
@@ -14,7 +15,7 @@
   --primary-hover: #1FA2FF;
   --primary-foreground: #fff;
   --secondary: #7DD3FC;
-  --secondary-foreground: #222;
+  --secondary-foreground: #23272F;
   --muted: #F5F5F4;
   --muted-foreground: #6B7280;
 }
@@ -22,13 +23,14 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: 'Manrope', Inter, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
   color: var(--foreground);
-  font-family: var(--font-inter), Inter, sans-serif;
-  font-weight: 700;
+  font-family: 'Manrope', Inter, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
 p, li, span, label {
@@ -61,20 +63,24 @@ p, li, span, label {
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, #12D8FA, #1FA2FF 60%, #FF61A6 100%);
+  background: linear-gradient(90deg, #12D8FA 0%, #A084E8 100%);
   color: #fff;
   border-radius: 2rem;
+  font-family: 'Manrope', Inter, sans-serif;
   font-weight: 700;
   font-size: 1.1rem;
   letter-spacing: 0.01em;
   padding: 0.75rem 2.5rem;
-  box-shadow: 0 4px 15px rgba(37,99,235,0.12);
+  box-shadow: 0 4px 24px -6px rgba(37,99,235,0.12);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px);
+  background-clip: padding-box;
   transition: all 0.2s;
-  border: none;
 }
 .btn-primary:hover {
-  filter: brightness(0.98) saturate(1.08);
-  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.04) saturate(1.08);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 32px -4px rgba(160,132,232,0.18);
 }
 
 .input-modern {
