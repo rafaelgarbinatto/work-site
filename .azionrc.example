@@ -1,0 +1,27 @@
+# Exemplo de configuração para Azion CLI
+# Copie este arquivo para .azionrc e preencha com suas credenciais
+
+# Credenciais da Azion
+AZION_TOKEN=seu_token_aqui
+AZION_ACCOUNT_ID=seu_account_id_aqui
+
+# Configurações do projeto
+PROJECT_NAME=workpoa-landing
+ENVIRONMENT=production
+
+# Configurações de deploy
+AUTO_PUBLISH=true
+PURGE_CACHE=true
+
+# Configurações de domínio
+DOMAIN_NAME=seu-dominio.azionedge.net
+
+# Configurações de bucket
+BUCKET_NAME=workpoa-landing-bucket
+
+# Configurações de cache
+CACHE_TTL=31536000
+
+# Configurações de monitoramento
+LOG_LEVEL=info
+ENABLE_METRICS=true

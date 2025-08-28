@@ -27,11 +27,11 @@ export default function Home() {
             src="/logo-workpoa.avif"
             width={48}
             height={48}
-            alt="Logo Work PoA"
+            alt="Logo Work Poa"
             className="w-10 h-8"
             priority
           />
-          <span className="text-2xl font-extrabold tracking-wide text-[#1a1a1a]">Work PoA</span>
+          <span className="text-2xl font-extrabold tracking-wide text-[#1a1a1a]">Work Poa</span>
         </div>
         <div className="hidden md:flex space-x-8 text-base font-medium text-[#222]">
           <a href="#servicos">Serviços</a>
@@ -226,7 +226,7 @@ export default function Home() {
           </h2>
           <div className="prose prose-lg mx-auto text-[#222]">
             <p className="text-lg leading-relaxed mb-6">
-              A <strong className="gradient-text">Work PoA</strong> é uma empresa especializada em engenharia, reformas e projetos de interiores, comprometida com a excelência e inovação em cada projeto.
+              A <strong className="gradient-text">Work Poa</strong> é uma empresa especializada em engenharia, reformas e projetos de interiores, comprometida com a excelência e inovação em cada projeto.
             </p>
             <p className="text-lg leading-relaxed mb-6">
               Atuamos com <strong>seriedade, qualidade e responsabilidade</strong>, atendendo tanto empresas quanto pessoas físicas, do conceito inicial à entrega final. Nossa equipe especializada oferece acompanhamento técnico completo, garantindo que cada detalhe seja executado com perfeição.
@@ -314,14 +314,14 @@ export default function Home() {
               src="/logo-workpoa.avif"
               width={32}
               height={32}
-              alt="Logo Work PoA"
+              alt="Logo Work Poa"
               className="w-8 h-6"
             />
             <span className="text-lg font-extrabold tracking-wide text-[#1a1a1a]">Work PoA</span>
           </div>
           <p className="text-[#222] mb-4">Engenharia, Reformas e Projetos de Interiores</p>
           <p className="text-sm text-[#888]">
-            &copy; {new Date().getFullYear()} Work PoA. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Work Poa. Todos os direitos reservados.
           </p>
         </div>
       </footer>
