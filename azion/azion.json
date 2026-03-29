@@ -1,23 +1,13 @@
 {
-  "name": "site-work-20250828162843",
-  "bucket": "site-work-20250828162843-20250828162851",
+  "name": "site-update",
+  "bucket": "",
   "preset": "next",
   "env": "production",
-  "prefix": "20250828162842",
-  "not-first-run": true,
-  "function": [
-    {
-      "id": 49647,
-      "name": "site-work-20250828162843",
-      "file": "",
-      "args": "./azion/args.json",
-      "instance-id": 44529,
-      "instance-name": "",
-      "cache-id": 0
-    }
-  ],
+  "prefix": "",
+  "not-first-run": false,
+  "function": [],
   "application": {
-    "id": 1756396150,
+    "id": 0,
     "name": "__DEFAULT__"
   },
   "domain": {
@@ -32,41 +22,15 @@
   "origin": null,
   "rules-engine": {
     "created": false,
-    "rules": [
-      {
-        "id": 472049,
-        "name": "Next.js Static Assets",
-        "phase": "request"
-      },
-      {
-        "id": 472050,
-        "name": "Deliver Static Assets",
-        "phase": "request"
-      },
-      {
-        "id": 472051,
-        "name": "Execute Next.js Function",
-        "phase": "request"
-      }
-    ]
+    "rules": null
   },
-  "cache-settings": [],
+  "cache-settings": null,
   "workloads": {
-    "id": 1756393939,
-    "name": "site-work-20250828162843",
-    "domains": [],
-    "url": "https://wag7avzpnso.map.azionedge.net",
-    "deployment_id": [
-      {
-        "id": 162059,
-        "name": "site-work-20250828162843"
-      }
-    ]
+    "id": 0,
+    "name": "",
+    "domains": null,
+    "url": "",
+    "deployment_id": null
   },
-  "connectors": [
-    {
-      "id": 154,
-      "name": "site-work-20250828162843"
-    }
-  ]
+  "connectors": null
 }

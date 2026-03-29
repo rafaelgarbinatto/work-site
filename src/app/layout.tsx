@@ -18,8 +18,8 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "Work PoA - Engenharia, Reformas e Projetos de Interiores",
-  description: "Especialistas em projetos de interiores, reformas e engenharia. Projetos em 3D, design de interiores, laudos técnicos e consultoria. R$699,00 até 20m² por ambiente.",
-  keywords: "projeto de interiores, reformas, engenharia, design, 3D, laudos técnicos, consultoria, Porto Alegre",
+  description: "Especialistas em serviços de engenharia para casas e apartamentos. Projetos residenciais, PPCI, laudos técnicos, consultoria e acompanhamento de obra.",
+  keywords: "engenharia residencial, projetos de casa, projetos de apartamento, PPCI, laudos técnicos, reformas, consultoria, Porto Alegre",
   authors: [{ name: "Work Poa" }],
   openGraph: {
     title: "Work PoA- Projetos de Interiores",

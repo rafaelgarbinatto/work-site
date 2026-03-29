@@ -1,22 +1,8 @@
-"use client";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import HeroMosaic from "@/components/ui/HeroMosaic";
-import React, { useState } from "react";
+import ZohoForm from "@/components/ZohoForm";
 
 export default function Home() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalImg, setModalImg] = useState<string | null>(null);
-
-  const openModal = (img: string) => {
-    setModalImg(img);
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-    setModalImg(null);
-  };
 
   return (
     <main className="min-h-screen bg-background">
@@ -50,12 +36,11 @@ export default function Home() {
 
       {/* HERO SECTION */}
       <HeroMosaic 
-        title="Projeto de Interiores"
-        subtitle="Por apenas R$699,00"
-        details="até 20m² por ambiente"
-        ctaText="Peça seu projeto agora!"
+        title="Engenharia & Projetos"
+        subtitle="Construções · Reformas · Projetos · PPCI"
+        details="Do projeto à regularização — com acompanhamento técnico completo"
+        ctaText="Solicite seu projeto"
         ctaHref="#contato"
-        bannerImage="/portfolio/banner.png"
       />
 
       {/* SERVIÇOS */}
@@ -168,8 +153,7 @@ export default function Home() {
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <div
                 key={n}
-                className="group relative overflow-hidden rounded-2xl shadow-lg hover-lift bg-white card-gradient-border cursor-pointer"
-                onClick={() => openModal(`/portfolio/${n}.png`)}
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover-lift bg-white card-gradient-border"
               >
                 <Image
                   src={`/portfolio/${n}.png`}
@@ -190,33 +174,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* MODAL DE IMAGEM DO PORTFÓLIO */}
-      {modalOpen && (
-        <div
-          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/80 backdrop-blur-sm animate-fade-in"
-          onClick={closeModal}
-        >
-          <div className="relative max-w-3xl w-full mx-4 aspect-[3/2]" onClick={e => e.stopPropagation()}>
-            <button
-              className="absolute top-2 right-2 text-white text-3xl font-bold bg-black/40 rounded-full w-10 h-10 flex items-center justify-center hover:bg-black/70 transition"
-              onClick={closeModal}
-              aria-label="Fechar"
-            >
-              &times;
-            </button>
-            <Image
-              src={modalImg ?? ''}
-              alt="Projeto ampliado"
-              fill
-              className="rounded-2xl shadow-2xl border-4 border-white object-contain"
-              style={{ objectFit: 'contain' }}
-              sizes="(max-width: 768px) 90vw, 60vw"
-              priority
-            />
-          </div>
-        </div>
-      )}
 
       {/* SOBRE */}
       <section id="sobre" className="py-20 px-6 lg:px-12 bg-background">
@@ -274,8 +231,8 @@ export default function Home() {
                         <stop offset="1" stopColor="#c837ab" />
                       </linearGradient>
                     </defs>
-                    <rect x="64" y="64" width="320" height="320" rx="80" stroke="url(#ig-outline)" stroke-width="32" fill="none" />
-                    <circle cx="224" cy="224" r="80" stroke="url(#ig-outline)" stroke-width="32" fill="none" />
+                    <rect x="64" y="64" width="320" height="320" rx="80" stroke="url(#ig-outline)" strokeWidth="32" fill="none" />
+                    <circle cx="224" cy="224" r="80" stroke="url(#ig-outline)" strokeWidth="32" fill="none" />
                     <circle cx="336" cy="112" r="16" fill="url(#ig-outline)" />
                   </svg>
                   <div>
@@ -285,23 +242,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="card-gradient-border p-8">
-              <form className="space-y-6">
-                <div>
-                  <Input type="text" placeholder="Nome completo" className="input-modern w-full" required />
-                </div>
-                <div>
-                  <Input type="email" placeholder="Email" className="input-modern w-full" required />
-                </div>
-                <div>
-                  <Input type="tel" placeholder="Telefone" className="input-modern w-full" required />
-                </div>
-                <div>
-                  <textarea placeholder="Como podemos ajudar?" rows={4} className="input-modern w-full resize-none" required />
-                </div>
-                <Button type="submit" className="btn-primary w-full">Enviar mensagem</Button>
-              </form>
-            </div>
+            <ZohoForm />
           </div>
         </div>
       </section>

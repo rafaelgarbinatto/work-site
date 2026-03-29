@@ -1,14 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: false,
   images: {
     unoptimized: true,
   },
-  distDir: 'out',
+  trailingSlash: false,
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  output: 'export',
 };
 
 module.exports = nextConfig;

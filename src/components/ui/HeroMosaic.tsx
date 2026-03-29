@@ -1,4 +1,4 @@
-// src/components/MosaicBanner.tsx
+// src/components/HeroMosaic.tsx
 import Image from "next/image";
 
 const images = [
@@ -16,86 +16,65 @@ export default function HeroMosaic({
   details,
   ctaText,
   ctaHref,
-  bannerImage,
 }: {
   title: string;
   subtitle: string;
   details?: string;
   ctaText: string;
   ctaHref: string;
-  bannerImage?: string;
 }) {
   return (
-    <section
-      className={
-        bannerImage
-          ? "relative w-full min-h-[calc(100vh-72px)] flex items-center justify-center overflow-hidden p-0 m-0"
-          : "relative w-full h-[420px] md:h-[540px] flex items-center justify-center overflow-hidden"
-      }
-      style={bannerImage ? { minHeight: 'calc(100vh - 72px)' } : {}}
-    >
-      {/* Se bannerImage for fornecida, exibe como fundo único */}
-      {bannerImage ? (
-        <>
-          <Image
-            src={bannerImage}
-            alt="Banner principal"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          {/* Overlay degradê na base, não cobrindo o texto */}
-          <div className="absolute inset-x-0 bottom-0 h-1/2 pointer-events-none bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-        </>
-      ) : (
-        <div className="absolute inset-0 grid grid-cols-3 grid-rows-2 gap-1 w-full h-full">
-          {images.map((src, i) => (
-            <div key={i} className="relative w-full h-full min-h-[140px]">
-              <Image
-                src={src}
-                alt={`Projeto ${i + 1}`}
-                fill
-                sizes="(max-width: 1024px) 33vw, (max-width: 2400px) 20vw, 15vw"
-                className="flex-1 object-cover h-full"
-                priority={i === 0}
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-black/80" />
-            </div>
-          ))}
-        </div>
-      )}
-      {/* Conteúdo centralizado */}
-      <div className="relative z-10 flex flex-col items-center justify-center text-center w-full max-w-3xl px-4"
-        style={bannerImage ? { minHeight: '60vh', justifyContent: 'center' } : {}}>
-        {bannerImage ? (
-          <div className="inline-block bg-[#FDF6EC]/95 rounded-2xl px-8 py-8 md:px-16 md:py-10 shadow-lg backdrop-blur-sm">
-            <h1 className="text-4xl md:text-6xl font-extrabold text-[#23272F] mb-3 drop-shadow-[0_2px_8px_rgba(160,132,232,0.10)]">{title}</h1>
-            <p className="text-2xl md:text-3xl mb-2 text-[#3A3A3A] font-semibold drop-shadow-[0_1px_4px_rgba(160,132,232,0.10)]">{subtitle}</p>
+    <section className="relative w-full h-[85vh] min-h-[520px] max-h-[900px] overflow-hidden">
+      {/* Mosaico 3x2 como backdrop */}
+      <div className="absolute inset-0 grid grid-cols-3 grid-rows-2 gap-[2px] w-full h-full">
+        {images.map((src, i) => (
+          <div key={i} className="relative w-full h-full">
+            <Image
+              src={src}
+              alt={`Projeto ${i + 1}`}
+              fill
+              sizes="(max-width: 768px) 50vw, 33vw"
+              className="object-cover"
+              priority={i < 3}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Overlay gradiente lateral suave — escurece só o terço esquerdo para o texto */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.08) 60%, transparent 100%)' }} />
+
+      {/* Conteúdo — alinhado à esquerda, terço esquerdo */}
+      <div className="relative z-10 h-full flex items-center">
+        <div className="w-full max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="max-w-xl lg:max-w-2xl">
+            {/* Headline — curta, impactante */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-5" style={{ color: '#ffffff', textShadow: '0 2px 16px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)' }}>
+              {title}
+            </h1>
+
+            {/* Tagline — serviços com separador */}
+            <p className="text-lg sm:text-xl md:text-2xl font-normal tracking-wide mb-4" style={{ color: '#ffffff', textShadow: '0 2px 12px rgba(0,0,0,0.6), 0 1px 2px rgba(0,0,0,0.4)' }}>
+              {subtitle}
+            </p>
+
+            {/* Detalhe — frase de reforço */}
             {details && (
-              <p className="text-lg mb-6 text-[#555] drop-shadow-[0_1px_2px_rgba(160,132,232,0.08)]">{details}</p>
+              <p className="text-base md:text-lg font-medium mb-8" style={{ color: '#ffffff', textShadow: '0 2px 12px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.5)' }}>
+                {details}
+              </p>
             )}
+
+            {/* CTA */}
             <a
               href={ctaHref}
-              className="btn-primary inline-block mt-2"
+              className="btn-primary inline-block px-8 py-4 text-lg font-bold"
+              style={{ color: '#ffffff', boxShadow: '0 4px 24px rgba(0,0,0,0.4), 0 0 40px rgba(18,216,250,0.25)', textShadow: '0 1px 3px rgba(0,0,0,0.3)' }}
             >
               {ctaText}
             </a>
           </div>
-        ) : (
-          <>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white drop-shadow-2xl mb-3">{title}</h1>
-            <p className="text-2xl md:text-3xl mb-2 text-white font-semibold drop-shadow-xl">{subtitle}</p>
-            {details && (
-              <p className="text-lg mb-6 text-gray-200 drop-shadow">{details}</p>
-            )}
-            <a
-              href={ctaHref}
-              className="inline-block mt-2 px-7 py-3 rounded-full bg-gradient-to-r from-sky-400 to-pink-400 text-white font-bold text-lg shadow-lg hover:scale-105 transition"
-            >
-              {ctaText}
-            </a>
-          </>
-        )}
+        </div>
       </div>
     </section>
   );
