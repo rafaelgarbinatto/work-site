@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HeroMosaic from "@/components/ui/HeroMosaic";
+import Navbar from "@/components/ui/Navbar";
 import ZohoForm from "@/components/ZohoForm";
 
 export default function Home() {
@@ -7,32 +8,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-background">
       {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 flex items-center justify-between px-6 lg:px-12 py-4 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100">
-        <div className="flex items-center space-x-3">
-          <Image
-            src="/logo-workpoa.avif"
-            width={48}
-            height={48}
-            alt="Logo Work Poa"
-            className="w-10 h-8"
-            priority
-          />
-          <span className="text-2xl font-extrabold tracking-wide text-[#1a1a1a]">Work Poa</span>
-        </div>
-        <div className="hidden md:flex space-x-8 text-base font-medium text-[#222]">
-          <a href="#servicos">Serviços</a>
-          <a href="#portfolio">Portfólio</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#contato">Contato</a>
-        </div>
-        <div className="md:hidden">
-          <button className="p-2">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* HERO SECTION */}
       <HeroMosaic 
@@ -222,6 +198,18 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
+                  {/* Ícone Email */}
+                  <svg className="w-8 h-8 align-middle" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="16" cy="16" r="16" fill="#1FA2FF" />
+                    <path d="M8 11l8 5 8-5" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                    <rect x="8" y="10" width="16" height="12" rx="2" stroke="#fff" strokeWidth="1.5" fill="none" />
+                  </svg>
+                  <div>
+                    <p className="font-semibold">E-mail</p>
+                    <a href="mailto:contato@work.poa.br" className="text-[#12D8FA] hover:underline">contato@work.poa.br</a>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3">
                   {/* Ícone Instagram oficial outline com gradiente, sem círculo */}
                   <svg className="w-8 h-8 align-middle" viewBox="0 0 448 448" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
@@ -248,22 +236,70 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="py-12 px-6 lg:px-12 bg-background border-t border-gray-100">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center space-x-3 mb-6">
-            <Image
-              src="/logo-workpoa.avif"
-              width={32}
-              height={32}
-              alt="Logo Work Poa"
-              className="w-8 h-6"
-            />
-            <span className="text-lg font-extrabold tracking-wide text-[#1a1a1a]">Work PoA</span>
+      <footer className="py-16 px-6 lg:px-12 bg-[#23272F] text-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+            {/* Coluna 1 — Marca */}
+            <div>
+              <div className="flex items-center space-x-3 mb-4">
+                <Image
+                  src="/logo-workpoa.avif"
+                  width={32}
+                  height={32}
+                  alt="Logo Work PoA"
+                  className="w-8 h-6"
+                />
+                <span className="text-lg font-extrabold tracking-wide" style={{ color: '#ffffff' }}>Work PoA</span>
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                Engenharia, construções, reformas e projetos. Do conceito à entrega com acompanhamento técnico completo.
+              </p>
+            </div>
+
+            {/* Coluna 2 — Navegação */}
+            <div>
+              <h4 className="font-bold text-sm uppercase tracking-wider mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>Navegação</h4>
+              <ul className="space-y-2">
+                {[{href: '#servicos', label: 'Serviços'}, {href: '#portfolio', label: 'Portfólio'}, {href: '#sobre', label: 'Sobre'}, {href: '#contato', label: 'Contato'}].map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} className="text-sm hover:text-[#12D8FA] transition-colors" style={{ color: 'rgba(255,255,255,0.7)' }}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Coluna 3 — Contato */}
+            <div>
+              <h4 className="font-bold text-sm uppercase tracking-wider mb-4" style={{ color: 'rgba(255,255,255,0.4)' }}>Contato</h4>
+              <ul className="space-y-3">
+                <li className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#12D8FA' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                  <a href="https://wa.me/5551992108449" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[#12D8FA] transition-colors" style={{ color: 'rgba(255,255,255,0.7)' }}>51 99210.8449</a>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style={{ color: '#12D8FA' }}>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                  <a href="mailto:contato@work.poa.br" className="text-sm hover:text-[#12D8FA] transition-colors" style={{ color: 'rgba(255,255,255,0.7)' }}>contato@work.poa.br</a>
+                </li>
+                <li className="flex items-center space-x-2">
+                  <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" style={{ color: '#12D8FA' }}>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                  </svg>
+                  <a href="https://instagram.com/workpoa" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-[#12D8FA] transition-colors" style={{ color: 'rgba(255,255,255,0.7)' }}>@workpoa</a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <p className="text-[#222] mb-4">Engenharia, Reformas e Projetos de Interiores</p>
-          <p className="text-sm text-[#888]">
-            &copy; {new Date().getFullYear()} Work Poa. Todos os direitos reservados.
-          </p>
+
+          {/* Divisor + Copyright */}
+          <div className="border-t border-white/10 pt-8 text-center">
+            <p className="text-xs" style={{ color: 'rgba(255,255,255,0.4)' }}>
+              &copy; {new Date().getFullYear()} Work PoA. Todos os direitos reservados.
+            </p>
+          </div>
         </div>
       </footer>
     </main>
